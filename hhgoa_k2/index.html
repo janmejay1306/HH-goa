@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HHGOA Task 1 | Team NetGlide Frame Generator</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Generate your HH Goa 2026 photo frame and ID card, build a combined team frame, and share your developer identity with #FrameInGoa. Created by Team NetGlide.">
+  <meta name="keywords" content="HHGOA, HH Goa 2026, Team NetGlide, #FrameInGoa, Photo Frame, ID Generator, Hackathon, Developer Identity">
+  <meta name="author" content="Team NetGlide">
+  
+  <!-- Favicon / Branding -->
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Ambient background glow elements -->
+  <div class="glow-sphere glow-left"></div>
+  <div class="glow-sphere glow-right"></div>
+  <!-- Extra ambient glows for richer bg depth -->
+  <div class="glow-sphere glow-top-center"></div>
+  <div class="glow-sphere glow-bottom-right"></div>
+  
+  <!-- Toast Notification System -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-container">
+      <img src="img/logo.webp" alt="Team NetGlide Logo" class="header-logo" id="header-logo-img" onerror="this.src='assets/logo.png'">
+      <span class="header-team-name">Team NetGlide</span>
+      <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <div class="header-badge" id="hhgoa-task-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">HHGOA / TASK 1</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="app-main">
+    
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="hero-container">
+        <div class="hero-tag">HHGOA 2026 &nbsp;•&nbsp; TEAM NETGLIDE SPRINT &nbsp;•&nbsp; #FrameInGoa</div>
+        <h1 class="hero-title">Frame Your Goa Story</h1>
+        <p class="hero-subtitle">
+          Create your personalized HH Goa 2026 photo frame, select your stack, unlock your builder class, and share it instantly with the community.
+        </p>
+      </div>
+    </section>
+
+    <!-- Quick How-To Section -->
+    <section class="how-it-works" id="how-it-works">
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <h3 class="step-title">Upload Photo</h3>
+          <p class="step-desc">Drop your profile picture (any size/aspect ratio). It automatically fits into the frame without manual cropping.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <h3 class="step-title">Personalize</h3>
+          <p class="step-desc">Enter your name, select your primary tech stack, and generate your custom hackathon Builder Class.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <h3 class="step-title">Frame &amp; Share</h3>
+          <p class="step-desc">Download your high resolution frame with 1 click and use the prefilled caption to share it on X using #FrameInGoa.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Generator Section Workspace -->
+    <section class="generator-section" id="generator-section">
+      <div class="generator-container">
+        
+        <!-- Toggle Tabs -->
+        <div class="tab-control-wrapper">
+          <div class="tab-controls" role="tablist">
+            <button class="tab-btn active" id="tab-individual" role="tab" aria-selected="true" aria-controls="individual-workspace">
+              <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              My Photo Frame
+            </button>
+            <button class="tab-btn" id="tab-team" role="tab" aria-selected="false" aria-controls="team-workspace">
+              <svg class="tab-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              Team Frame
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab 1: Individual Workspace -->
+        <div class="workspace-grid active" id="individual-workspace" role="tabpanel" aria-labelledby="tab-individual">
+          <!-- Left Column: Input UI -->
+          <div class="controls-card">
+            <h2 class="section-card-title">Frame Identity</h2>
+            <p class="section-card-desc">Enter your details to generate your HH Goa 2026 builder profile.</p>
+
+            <form id="individual-form" class="generator-form" onsubmit="event.preventDefault();">
+              <!-- Upload Area -->
+              <div class="form-group">
+                <label class="form-label">Upload Profile Photo</label>
+                <div class="upload-dropzone" id="dropzone-individual">
+                  <input type="file" id="file-individual" accept="image/png, image/jpeg, image/webp" class="file-input-hidden" aria-label="Upload Photo">
+                  
+                  <div class="dropzone-prompt" id="prompt-individual">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                      <polyline points="17 8 12 3 7 8"></polyline>
+                      <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <span class="upload-text">Drag &amp; drop your photo or <span class="upload-link">Browse files</span></span>
+                    <span class="upload-hint">Supports PNG, JPG, WebP. High-res camera photos fit automatically.</span>
+                  </div>
+
+                  <div class="dropzone-preview hidden" id="preview-container-individual">
+                    <img src="" alt="Uploaded profile thumbnail" class="thumbnail-img" id="thumbnail-individual">
+                    <div class="preview-actions">
+                      <span class="preview-filename" id="filename-individual">profile.png</span>
+                      <button type="button" class="btn-icon-danger" id="btn-remove-individual" title="Remove image">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                          <polyline points="3 6 5 6 21 6"></polyline>
+                          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- CHANGE 4 & 5: Name field starts blank, with validation message -->
+              <div class="form-group">
+                <label for="input-name" class="form-label">Your Name</label>
+                <input type="text" id="input-name" class="text-input" placeholder="e.g. Aarav Sharma" maxlength="24" autocomplete="off">
+                <span class="field-error hidden" id="name-error">Only letters and spaces allowed (e.g. Aarav Sharma)</span>
+              </div>
+
+              <!-- Stack Dropdown + Custom Stack -->
+              <div class="form-group">
+                <label for="select-stack" class="form-label">Technical Stack</label>
+                <div class="select-wrapper">
+                  <select id="select-stack" class="select-input">
+                    <option value="Full Stack">Full Stack</option>
+                    <option value="Frontend">Frontend</option>
+                    <option value="Backend">Backend</option>
+                    <option value="AI / ML">AI / ML</option>
+                    <option value="Design">Design</option>
+                    <option value="Product">Product</option>
+                    <option value="Web3">Web3</option>
+                    <option value="Other">Other (Write Custom Stack)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Custom Stack input (hidden unless "Other" selected) -->
+              <div class="form-group hidden" id="custom-stack-group">
+                <label for="input-custom-stack" class="form-label">Custom Stack Name</label>
+                <input type="text" id="input-custom-stack" class="text-input" placeholder="e.g. Systems Engineer" maxlength="20">
+              </div>
+
+              <!-- Builder Class Selection -->
+              <div class="form-group">
+                <label class="form-label">Builder Class</label>
+                <div class="builder-class-row">
+                  <input type="text" id="input-class" class="text-input builder-class-input" readonly>
+                  <button type="button" class="btn-secondary btn-shuffle" id="btn-shuffle-class" title="Regenerate Builder Class">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shuffle-icon">
+                      <path d="M23 4v6h-6"/>
+                      <path d="M1 20v-6h6"/>
+                      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                    </svg>
+                    <span>Roll Class</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right Column: Canvas Live Preview -->
+          <div class="preview-card">
+            <h2 class="section-card-title">Live Frame Preview</h2>
+            <p class="section-card-desc">Interactive high-resolution preview. Fits image automatically.</p>
+
+            <div class="canvas-display-wrapper">
+              <div class="canvas-aspect-box">
+                <canvas id="individual-canvas" class="render-canvas"></canvas>
+                <div class="canvas-overlay-loading hidden" id="canvas-loader">
+                  <div class="spinner"></div>
+                  <span>Generating Frame...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- CHANGE 9: Redesigned compact action area -->
+            <div class="export-actions-group">
+
+              <!-- Validation status bar -->
+              <div class="validation-status" id="validation-status">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="status-icon">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="8" x2="12" y2="12"></line>
+                  <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                </svg>
+                <span id="validation-message">Upload a photo to get started.</span>
+              </div>
+
+              <!-- Primary: Download -->
+              <button type="button" class="btn-primary btn-download-full" id="btn-download-individual" disabled>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Frame
+              </button>
+
+              <!-- Secondary: Share row -->
+              <div class="share-actions-row">
+                <button type="button" class="btn-secondary btn-action-compact" id="btn-copy-individual" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-sm">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copy Caption
+                </button>
+                <a href="" target="_blank" class="btn-social btn-x btn-action-compact disabled-link" id="btn-share-individual">
+                  <svg class="btn-icon-sm fill-icon" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                  </svg>
+                  Share to X
+                </a>
+              </div>
+
+              <!-- Caption Textarea (compact, collapsible feel) -->
+              <div class="caption-panel" id="caption-panel">
+                <div class="caption-panel-header">
+                  <span class="caption-panel-label">Generated Caption</span>
+                  <span class="caption-panel-hint">#FrameInGoa</span>
+                </div>
+                <textarea id="caption-individual" class="caption-textarea" readonly placeholder="Complete all fields to generate your sharing caption..."></textarea>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Team Workspace -->
+        <div class="workspace-grid" id="team-workspace" role="tabpanel" aria-labelledby="tab-team">
+          <!-- Left Column: Teammates Manager -->
+          <div class="controls-card">
+            <div class="team-header-row">
+              <h2 class="section-card-title">Teammate Manager</h2>
+              <span class="team-counter" id="team-size-counter">0 / 6 Members</span>
+            </div>
+            <p class="section-card-desc">Add team members to construct a grid card composite frame.</p>
+
+            <!-- Teammate Grid List -->
+            <div class="teammates-list" id="teammates-list-container">
+              <div class="team-empty-state" id="team-empty-state-msg">
+                <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+                <p>No teammates added yet. Add at least 1 teammate to start building a Team Frame.</p>
+              </div>
+            </div>
+
+            <!-- Add Teammate Trigger Button -->
+            <button type="button" class="btn-secondary btn-full-width" id="btn-trigger-add-form">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              Add Teammate
+            </button>
+
+            <!-- Inline Form for Adding Teammate (hidden by default) -->
+            <div class="teammate-form-wrapper hidden" id="teammate-form-container">
+              <h3 class="teammate-form-title" id="teammate-form-title-text">Teammate Details</h3>
+              <form id="team-member-form" class="teammate-input-form" onsubmit="event.preventDefault();">
+                <!-- Teammate Photo Upload -->
+                <div class="form-group">
+                  <label class="form-label">Teammate Photo</label>
+                  <div class="upload-dropzone dropzone-mini" id="dropzone-teammate">
+                    <input type="file" id="file-teammate" accept="image/png, image/jpeg, image/webp" class="file-input-hidden" aria-label="Upload Teammate Photo">
+                    
+                    <div class="dropzone-prompt" id="prompt-teammate">
+                      <svg class="upload-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                      </svg>
+                      <span class="upload-text-mini"><span class="upload-link">Upload Image</span></span>
+                    </div>
+
+                    <div class="dropzone-preview hidden" id="preview-container-teammate">
+                      <img src="" alt="Teammate profile thumbnail" class="thumbnail-img-mini" id="thumbnail-teammate">
+                      <div class="preview-actions">
+                        <button type="button" class="btn-icon-danger" id="btn-remove-teammate" title="Remove photo">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="12" height="12">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Teammate Name -->
+                <div class="form-group">
+                  <label for="team-input-name" class="form-label">Name</label>
+                  <input type="text" id="team-input-name" class="text-input" placeholder="e.g. Reya Sen" maxlength="24">
+                </div>
+
+                <!-- Teammate Stack -->
+                <div class="form-group">
+                  <label for="team-select-stack" class="form-label">Stack</label>
+                  <div class="select-wrapper">
+                    <select id="team-select-stack" class="select-input">
+                      <option value="Full Stack">Full Stack</option>
+                      <option value="Frontend">Frontend</option>
+                      <option value="Backend">Backend</option>
+                      <option value="AI / ML">AI / ML</option>
+                      <option value="Design">Design</option>
+                      <option value="Product">Product</option>
+                      <option value="Web3">Web3</option>
+                      <option value="Other">Other (Write Custom)</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- Custom Teammate Stack input (hidden unless Other is selected) -->
+                <div class="form-group hidden" id="team-custom-stack-group">
+                  <label for="team-input-custom-stack" class="form-label">Custom Stack Name</label>
+                  <input type="text" id="team-input-custom-stack" class="text-input" placeholder="e.g. Cloud Arch" maxlength="20">
+                </div>
+
+                <!-- Teammate Builder Class -->
+                <div class="form-group">
+                  <label class="form-label">Builder Class</label>
+                  <div class="builder-class-row">
+                    <input type="text" id="team-input-class" class="text-input builder-class-input" readonly>
+                    <button type="button" class="btn-secondary btn-shuffle" id="btn-team-shuffle-class" title="Shuffle Builder Class">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="shuffle-icon">
+                        <path d="M23 4v6h-6"/>
+                        <path d="M1 20v-6h6"/>
+                        <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+                      </svg>
+                      <span>Roll</span>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Form Controls -->
+                <div class="form-actions-row">
+                  <button type="button" class="btn-secondary" id="btn-cancel-teammate">Cancel</button>
+                  <button type="button" class="btn-primary" id="btn-save-teammate">Save Teammate</button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <!-- Right Column: Canvas Team Preview -->
+          <div class="preview-card">
+            <h2 class="section-card-title">Team Frame Preview</h2>
+            <p class="section-card-desc">Combined Team layout renders instantly. Auto-arranges into responsive grid.</p>
+
+            <div class="canvas-display-wrapper">
+              <div class="canvas-aspect-box">
+                <canvas id="team-canvas" class="render-canvas"></canvas>
+                <div class="canvas-overlay-loading hidden" id="team-canvas-loader">
+                  <div class="spinner"></div>
+                  <span>Generating Team Frame...</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Team Export Actions (compact) -->
+            <div class="export-actions-group">
+              <button type="button" class="btn-primary btn-download-full" id="btn-download-team" disabled>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                Download Team Frame
+              </button>
+
+              <div class="share-actions-row">
+                <button type="button" class="btn-secondary btn-action-compact" id="btn-copy-team" disabled>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="btn-icon-sm">
+                    <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                    <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                  </svg>
+                  Copy Caption
+                </button>
+                <a href="" target="_blank" class="btn-social btn-x btn-action-compact disabled-link" id="btn-share-team">
+                  <svg class="btn-icon-sm fill-icon" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
+                  </svg>
+                  Share to X
+                </a>
+              </div>
+
+              <div class="caption-panel">
+                <div class="caption-panel-header">
+                  <span class="caption-panel-label">Team Caption</span>
+                  <span class="caption-panel-hint">#FrameInGoa</span>
+                </div>
+                <textarea id="caption-team" class="caption-textarea" readonly placeholder="Add teammates to generate team caption..."></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="app-footer">
+    <div class="footer-container">
+      <div class="footer-left">
+        <span class="footer-brand">Team NetGlide</span>
+        <span class="footer-divider">|</span>
+        <span class="footer-meta">HHGOA 2026 / Task 1</span>
+      </div>
+      <div class="footer-tag">#FrameInGoa</div>
+    </div>
+  </footer>
+
+  <!-- JS Controller -->
+  <script src="script.js"></script>
+</body>
+</html>
