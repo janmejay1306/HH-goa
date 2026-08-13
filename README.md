@@ -1,59 +1,53 @@
-# HH-goa
-Create branded HH Goa 2026 Builder profile frames and ID cards in seconds. Upload a photo → generate → download or share on X.
+# HH Goa 2026 — Frame Generator  
+**Team NetGlide**
 
-# HH Goa 2026 — Builder Frame & ID Card Generator
+Create your personalized **HH Goa 2026** photo frame and team frame in seconds.
 
-Create your official **HH Goa 2026** Builder profile frame or ID card in seconds.
-
-Upload a photo → generate a branded graphic → download or share on X instantly.
-
-🌴 **August 2026 • Goa, India**
+Upload a photo → choose your stack → unlock your Builder Class → download or share with `#FrameInGoa`.
 
 ---
 
-## Features
+ Features
 
-- **PFP Frame** – Circular profile frame with neon ring and HH Goa 2026 branding
-- **Builder ID Card** – Horizontal badge with name, role/stack, and random builder title
-- Photo zoom + drag to reposition
-- HEIC / iPhone photo support
-- One-click download (PNG)
-- Share on 𝕏 with pre-filled caption
-- Fully client-side — no uploads to any server
+ Individual Frame
+- Upload profile photo (auto-fit, no manual crop needed)
+- Enter name
+- Select technical stack (Full Stack, Frontend, Backend, AI/ML, Design, Product, Web3, or Custom)
+- Generate random **Builder Class**
+- Live canvas preview
+- Download high-resolution frame
+- One-click **Share to X** with pre-filled caption
 
----
+ Team Frame
+- Add up to **6 teammates**
+- Each member gets photo, name, stack, and Builder Class
+- Auto-arranged team grid layout
+- Download combined team frame
+- Share team caption with `#FrameInGoa`
 
-## How to Use
+
+
+ How to Use
 
 1. Open the tool in your browser
-2. Choose **PFP Frame** or **Builder ID Card**
-3. Upload your photo (JPG, PNG, WEBP, or HEIC)
-4. Adjust zoom and drag to position your face
-5. (For ID Card) Enter your name and role
-6. Download or Share on 𝕏
+2. Choose **My Photo Frame** or **Team Frame**
+3. Upload photo(s)
+4. Fill name and stack
+5. Roll your Builder Class
+6. Download or Share on X
 
----
 
-## Tech Stack
 
-- HTML5 + CSS3
+ Tech Stack
+
+- HTML5
+- CSS3
 - Vanilla JavaScript
-- Canvas API for image generation
-- [heic2any](https://github.com/alexcorvi/heic2any) for iPhone HEIC conversion
-- Google Fonts (Outfit, Inter, Space Mono)
+- Canvas API (for frame generation)
+- Google Fonts (Plus Jakarta Sans, JetBrains Mono)
 
-No frameworks. No backend. Runs 100% in the browser.
+No frameworks. No backend. Runs fully in the browser.
 
----
 
-## Run Locally
 
-```bash
-# Clone the repo
-git clone https://github.com/YOUR_USERNAME/hh-goa-2026-frame-generator.git
-cd hh-goa-2026-frame-generator
-
-# Open in browser
-# Just open index.html
-# Or use a simple local server:
-npx serve .
+## Project Structure
